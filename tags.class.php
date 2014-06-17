@@ -56,8 +56,8 @@ class tags{
 		
 	}
 	
-	function loadCss($import=false){
-		$pasta = opendir(CSSPATH);
+	function loadCss($css_path,$import=false){
+		$pasta = opendir($css_path);
 		$barra_n = "\n";
 		$css = array();
 		$i=0;
@@ -71,16 +71,16 @@ class tags{
 		$arqCss = $css;
 		for($i=0;$i<count($arqCss);$i++):
 			if($import == true):
-				print '<style type="text/css">@import url("'.CSSPATH.$arqCss[$i].'");</style>'.$barra_n.'';
+				print '<style type="text/css">@import url("'.$css_path.$arqCss[$i].'");</style>'.$barra_n.'';
 			else:
-				print '<link href="'.CSSPATH.$arqCss[$i].'" rel="stylesheet"" />'.$barra_n.'';
+				print '<link href="'.$css_path.$arqCss[$i].'" rel="stylesheet"" />'.$barra_n.'';
 			endif;
 		endfor;
 	
 	}
 	
-	function loadJs(){
-		$pasta = opendir(JSPATH);
+	function loadJs($js_path){
+		$pasta = opendir($js_path);
 		$barra_n = "\n";
 		$js = array();
 		$i=0;
@@ -93,15 +93,8 @@ class tags{
 		
 		$arqJs = $js;
 		for($i=0;$i<count($arqJs);$i++):
-			print '<script src="'.JSPATH.$arqJs[$i].'"></script>'.$barra_n.'';		
+			print '<script src="'.$js_path.$arqJs[$i].'"></script>'.$barra_n.'';		
 		endfor;
-	}
-	
-	function loadCkEditor($arquivo=null, $remoto=false){
-		if($arquivo != null):
-			if($remoto == false) $arquivo = $arquivo.'.js';
-				echo '<script type="text/javascript" src="'.$arquivo.'"></script>';		
-		endif;
 	}
 
 }
