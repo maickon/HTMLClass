@@ -1,12 +1,11 @@
 <?php
 /**
- * HelpRPG, Um site criado com intuito de ajudar os mestre de RPG que jogam no sistema d20.
+ * HTMLClass
  *
  * @author    Maickon José Rangel <maickonmaickonmaickon@Gmail.com>
- * @copyright 2012-2013 Maickon José Rangel <maickonmaickonmaickon@Gmaicl.com>
- * @category RPG <helprpg.br@gmail.com>
- * @version   1.2
- * @link      http://www.helprpg.com.br
+ * @copyright 2013 Maickon José Rangel <maickonmaickonmaickon@Gmail.com>
+ * @category PHP
+ * @version   1.0
  */
 
 class tags{
