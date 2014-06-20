@@ -57,44 +57,51 @@ class tags{
 	}
 	
 	function loadCss($css_path,$import=false){
-		$pasta = opendir($css_path);
-		$barra_n = "\n";
-		$css = array();
-		$i=0;
-		while($p = readdir($pasta)):
-			if($p != '.' and $p != '..'):
-				$css[$i] = $p;
-				$i++;
-			endif;
-		endwhile;
-		
-		$arqCss = $css;
-		for($i=0;$i<count($arqCss);$i++):
-			if($import == true):
-				print '<style type="text/css">@import url("'.$css_path.$arqCss[$i].'");</style>'.$barra_n.'';
-			else:
-				print '<link href="'.$css_path.$arqCss[$i].'" rel="stylesheet"" />'.$barra_n.'';
-			endif;
-		endfor;
-	
+		if(opendir($css_path)):
+			$pasta = opendir($css_path);
+			$barra_n = "\n";
+			$css = array();
+			$i=0;
+			while($p = readdir($pasta)):
+				if($p != '.' and $p != '..'):
+					$css[$i] = $p;
+					$i++;
+				endif;
+			endwhile;
+			
+			$arqCss = $css;
+			for($i=0;$i<count($arqCss);$i++):
+				if($import == true):
+					print '<style type="text/css">@import url("'.$css_path.$arqCss[$i].'");</style>'.$barra_n.'';
+				else:
+					print '<link href="'.$css_path.$arqCss[$i].'" rel="stylesheet"" />'.$barra_n.'';
+				endif;
+			endfor;
+		else:
+			return 0;
+		endif;
 	}
 	
 	function loadJs($js_path){
-		$pasta = opendir($js_path);
-		$barra_n = "\n";
-		$js = array();
-		$i=0;
-		while($p = readdir($pasta)):
-			if($p != '.' and $p != '..'):
-				$js[$i] = $p;
-				$i++;
-			endif;
-		endwhile;
-		
-		$arqJs = $js;
-		for($i=0;$i<count($arqJs);$i++):
-			print '<script src="'.$js_path.$arqJs[$i].'"></script>'.$barra_n.'';		
-		endfor;
+		if(opendir($js_path)):
+			$pasta = opendir($js_path);
+			$barra_n = "\n";
+			$js = array();
+			$i=0;
+			while($p = readdir($pasta)):
+				if($p != '.' and $p != '..'):
+					$js[$i] = $p;
+					$i++;
+				endif;
+			endwhile;
+			
+			$arqJs = $js;
+			for($i=0;$i<count($arqJs);$i++):
+				print '<script src="'.$js_path.$arqJs[$i].'"></script>'.$barra_n.'';		
+			endfor;
+		else:
+			return 0;
+		endif;
 	}
 
 }
